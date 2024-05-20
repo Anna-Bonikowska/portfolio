@@ -1,0 +1,140 @@
+---
+title: "statystyka lista 2"
+author: "Anna Bonikowska"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## zad 1
+
+
+Zmnienna X1 pochodzi z rozkładu normalnego o wartościach mean=0, sd=1
+
+```{r ,echo=FALSE}
+#pobranie zmiennych
+df <- read.table(file='D:\\studia\\wstep do statystyki\\lab2.csv ',sep=",", dec='.', header=TRUE, )
+
+
+hist(df$X1, freq=FALSE)
+x <- seq(-3, 3, by=0.01)
+curve(dnorm(x, mean=0, sd=1), col = "red", add = TRUE)
+```
+
+Zmnienna X2 pochodzi z rozkładu wykładniczego o parametrze 2.2.
+
+```{r ,echo=FALSE}
+hist(df$X2, freq=FALSE)
+x <- seq(0, 3, by=0.01)
+curve(dexp(x, rate=2.2), col = "red", add = TRUE)
+```
+
+Zmnienna X3 pochodzi z rozkładu gamma o parametrach shape=3.7, scale=0.54.
+
+```{r ,echo=FALSE}
+hist(df$X3, freq=FALSE)
+x <- seq(0, 6, by=0.01)
+curve(dgamma(x, shape=3.7, scale=0.54), col = "red", add = TRUE)
+```
+
+Zmnienna X4 pochodzi z rozkładu normalnego o parametrach mean=0.44, sd=0.15
+
+```{r ,echo=FALSE}
+hist(df$X4, freq=FALSE)
+x <- seq(0, 1, by=0.01)
+curve(dnorm(x, mean=0.44, sd=0.15), col = "red", add = TRUE)
+```
+
+Zmnienna X5 pochodzi z rozkładu jednostajnego na odcinku [-3,3]
+
+```{r ,echo=FALSE}
+hist(df$X5, freq=FALSE)
+x <- seq(3, 3.6, by=0.01)
+curve(dunif(x, min=3, max=3.52), col = "red", add = TRUE)
+
+```
+
+#zad 2
+
+```{r, echo=FALSE}
+
+#co to jest wykres kwantylowy?
+n <- rnorm(100,sd=2,mean=1)
+e <- rexp(100, rate=2)
+b <- rbeta(100, shape1=1,shape2=1)
+
+
+qqnorm(n,col="green", main="Rozkład Normalny N(0,4) w porównaniu z rozkładem normalnym")
+qqline(n, col="blue")
+qqnorm(n,col="green", main="Rozkład Normalny N(0,4) w porównaniu z rozkładem wykładniczym")
+qqline(e, col="blue")
+qqnorm(n,col="green", main="Rozkład Normalny N(0,4) w porównaniu z rozkładem beta")
+qqline(b, col="blue")
+
+
+qqnorm(e,col="green", main="Rozkład Normalny Exp(2) w porównaniu z rozkładem normalnym")
+qqline(n, col="blue")
+qqnorm(e,col="green", main="Rozkład Normalny Exp(2) w porównaniu z rozkładem wykładniczym")
+qqline(e, col="blue")
+qqnorm(e,col="green", main="Rozkład Normalny Exp(2) w porównaniu z rozkładem beta")
+qqline(b, col="blue")
+
+qqnorm(b,col="green", main="Rozkład Normalny Beta N(1,1) w porównaniu z rozkładem normalnym")
+qqline(n, col="blue")
+qqnorm(b,col="green", main="Rozkład Normalny Beta N(1,1) w porównaniu z rozkładem wykładniczym")
+qqline(e, col="blue")
+qqnorm(b,col="green", main="Rozkład Normalny Beta N(1,1) w porównaniu z rozkładem beta")
+qqline(b, col="blue")
+
+
+
+
+```
+Na wykresie rozkładu normalnego pojawiła sie konfiguracja punktów przypominająca linię prostą.
+
+
+
+#zad 3
+
+```{r, echo=FALSE}
+
+x1 <- rnorm(200,sd=1,mean=0)
+x2 <- rnorm(200,sd=2,mean=0)
+x3 <- rnorm(200,sd=1,mean=1)
+x4 <- rnorm(200,sd=sqrt(27),mean=1)
+
+
+
+boxplot(x1,x2,x3,x4, names=c("x1","x2","x3","x4"), main="box- ploty zmiennych x1, x2, x3, x4", xlab= seq(-1,1, by=0.01))
+
+summary(x1)
+
+boxplot(x1, names=c("x1"), main="box- ploty zmiennej x1")
+```
+wartości z boxplotów
+
+
+Wartość estymatora mediany wynosi 0
+
+Wartość estymatora mediany wynosi 0,7
+
+Wartość estymatora mediany wynosi 0,7
+
+.
+.
+
+Rzeczywuste wartości N(0,1):
+
+Wartość estymatora mediany wynosi 0
+
+
+Wartość estymatora mediany wynosi 0,657
+
+Wartość estymatora mediany wynosi -0,657
+
